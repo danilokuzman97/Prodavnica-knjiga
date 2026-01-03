@@ -1,0 +1,44 @@
+body {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  background-color: #4A90E2;
+  color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+nav a {
+  color: white;
+  margin-right: 15px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #E3F2FD;
+}
+
+.footer {
+  background-color: #4A90E2;
+  color: white;
+  padding: 15px;
+  margin-top: 40px;
+}
