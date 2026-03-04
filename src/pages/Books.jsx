@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Books() {
   const [books, setBooks] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
+  const [role, setRole] = useState(null);
   const navigate = useNavigate();
 
   const fetchBooks = async () => {
@@ -22,6 +23,15 @@ function Books() {
 
   useEffect(() => {
     fetchBooks();
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        setRole(payload.role);
+      } catch (error) {
+        console.error('Invalid token');
+      }
+    }
   }, []);
 
   const handleDelete = async (id) => {
@@ -39,7 +49,9 @@ function Books() {
 return (
     <div>
       <h1>Books</h1>
+      {role && (
       <button onClick={() => navigate('/create-book')}>Add Book</button>
+      )}
       {errorMsg && <p>{errorMsg}</p>}
 
       <table border="1">
@@ -53,6 +65,12 @@ return (
             <th>Author</th>
             <th>Publisher</th>
             <th>Actions</th>
+            {role === "Editor" && (
+              <>
+                <th>Edit</th>
+                <th>Delete</th>
+              </>
+            )}  
           </tr>
         </thead>
         <tbody>
@@ -65,10 +83,14 @@ return (
               <td>{book.isbn}</td>
               <td>{book.author?.fullName || 'N/A'}</td>
               <td>{book.publisher?.name || 'N/A'}</td>
+              {role === "Editor" && (
+                <>
               <td>
                 <button onClick={() => navigate(`/edit-book/${book.id}`)}>Edit</button>
                 <button onClick={() => handleDelete(book.id)}>Delete</button>
               </td>
+              </>
+              )}
             </tr>
           ))}
         </tbody>
