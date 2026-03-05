@@ -7,6 +7,7 @@ import Books from './pages/Books';
 import BookForm from './pages/BookForm';
 import Login from './pages/Login';
 import UserContext from './userContext';
+import GoogleCallback from "./pages/GoogleCallback";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/books" element={<Books/>}/>
         <Route path="/create-book" element={<BookForm />} /> 
         <Route path="/edit-book/:id" element={<BookForm />} />
+        <Route path="/google-callback" element={<GoogleCallback />} />
       </Routes>
       <Footer/>
     </BrowserRouter>
