@@ -1,4 +1,3 @@
-// GoogleCallback.jsx
 import React, { useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import UserContext from "../userContext";

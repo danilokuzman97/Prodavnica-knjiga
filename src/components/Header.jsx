@@ -23,6 +23,9 @@ function Header() {
       <nav>
         <Link to="/publishers">Publishers</Link><br />
         <Link to="/books">Books</Link><br />
+        {user && user.role === "Editor" && (
+          <Link to="/volumes/search">Search Volumes</Link>
+        )}
         {/* Create book i Logout vidljivi samo prijavljenim korisnicima */}
         {user && (
           <>
@@ -35,7 +38,6 @@ function Header() {
           <Link to="/">Login</Link>
         )}
       </nav>
-      <Outlet />
     </div>
   );
 }
